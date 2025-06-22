@@ -2,7 +2,7 @@
 GET http://localhost:3000/api/perros
 
 ### Obtener un perro por ID
-GET http://localhost:3000/api/perros/68560a2d08080f82ede5276c
+GET http://localhost:3000/api/perros/68560a2d08080f82ede5276
 
 ### Agregar un nuevo perro
 POST http://localhost:3000/api/perros
@@ -11,7 +11,7 @@ Content-Type: application/json
 {
   "name": "Fido",
   "breed": "Golden Retriever",
-  "age": 4,
+  "age": 2,
   "isGoodBoy": true
 }
 
@@ -26,5 +26,5 @@ Content-Type: application/json
 }
 
 ### Eliminar un perro
-DELETE http://localhost:3000/api/perros/68561e67b9d15a5107495771
+DELETE http://localhost:3000/api/perros/68588cf8c07ca023b1a69e12
 

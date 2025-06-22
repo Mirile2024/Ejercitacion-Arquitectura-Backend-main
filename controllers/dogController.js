@@ -4,26 +4,26 @@ const getdog = async (req, res) => {
   try{
       const allDogs = await Dog.find()
       if( allDogs.length === 0 ){
-        return res.status(404).json({ error: "No hay perros en la base de datos"})
+         res.status(404).json({ error: "No hay perros en la base de datos"})
       } else {
-        return res.status(200).json(allDogs)
+        res.status(200).json(allDogs)
       }
   } catch (error) {
-      return res.status(500).json({ error: "Error al obtener los perros" })
+      res.status(500).json({ message: "Error al obtener los perros" }, error)
   }
 };
 
 const getdogById = async (req, res) => {
+  const { id } = req.params
   try{
-    const { id } = req.params
     const dog = await Dog.findById(id)
     if(!dog){
-      return res.status(404).json({ error: "No hay perro con ese ID"})
+       res.status(404).json({ message: "Perro no Encontrado"}, error)
     } else {
-      return res.status(200).json(dog)
+     res.status(200).json({dog})
     }
   } catch (error) {
-    return res.status(500).json({ error: "Error al obtener el perro con ese ID" })
+    res.status(500).json({ message: "Error al obtener el perro con ese ID" }, error)
   }
 }
 
@@ -33,7 +33,7 @@ const postDog = async (req, res) => {
     const insertedDog = await newDog.save()
     return res.status(201).json({message: "Perro agregado exitosamente", perro: insertedDog})
   } catch (error) {
-    return res.status(400).json({ error: "Los datos proporcionados son inválidos." })
+    return res.status(400).json({ message: "Los datos proporcionados son inválidos." }, error)
   }
 }
 
@@ -43,20 +43,20 @@ const putDog =async (req, res) => {
     const updatedDog = await Dog.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-    return res.status(200).json(updatedDog)// ver manejo de error 404
+    res.status(200).json(updatedDog)// ver manejo de error 404
 
   } catch (error) {
-    return res.status(500).json({ error: "Error al actualizar el perro" })
+    res.status(500).json({ message: "Error al actualizar el perro" }, error)  
   }
 } 
 
 const deleteDog = async (req, res) => {
   try{
     const { id } = req.params
-    const deletedDog = await Dog.findByIdAndDelete(id)
-    return res.status(200).json("Perro eliminado exitosamente")
+    await Dog.findByIdAndDelete(id)
+     res.status(200).json("Perro eliminado exitosamente")
   } catch (error) {
-    return res.status(500).json({ error: "Error al eliminar el perro" })
+    res.status(500).json({ message: "Error al eliminar el perro" }, error)
   }
 }
 module.exports = { 
