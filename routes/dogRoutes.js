@@ -5,7 +5,7 @@ const {
     postDog,
     putDog,
     deleteDog,
-} = require("../controllers/dogController");
+} = require("../controllers/dogPromesas");
 router.get("/", getdog);
 router.get("/:id", getdogById);
 router.post("/", postDog);

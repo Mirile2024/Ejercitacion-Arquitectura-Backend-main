@@ -16,14 +16,15 @@ Content-Type: application/json
 }
 
 ### Actualizar un perro
-PUT http://localhost:3000/api/perros/685613d5a5e4075d8bf8d7f2
+PUT http://localhost:3000/api/perros/6856202f613b21884866af10
 Content-Type: application/json
 
 {
   "name": "Fido El Magnifico",
-  "age": 11,
+  "age": 4,
   "isGoodBoy": false
 }
 
 ### Eliminar un perro
-DELETE http://localhost:3000/api/perros/68561fd8c704859890546fda
+DELETE http://localhost:3000/api/perros/68561e67b9d15a5107495771
+

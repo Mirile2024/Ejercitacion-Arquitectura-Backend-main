@@ -54,7 +54,7 @@ const deleteDog = async (req, res) => {
   try{
     const { id } = req.params
     const deletedDog = await Dog.findByIdAndDelete(id)
-    return res.status(200).json(deletedDog)
+    return res.status(200).json("Perro eliminado exitosamente")
   } catch (error) {
     return res.status(500).json({ error: "Error al eliminar el perro" })
   }
