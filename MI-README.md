@@ -1,19 +1,3 @@
-# Ejercitación de Arquitectura Backend: API CRUD con Express y MongoDB 🖥️
-
-## Descripción del Proyecto 📋
-
-En este proyecto, desarrollarás una API RESTful utilizando **Express** y **MongoDB** que permitirá realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre una colección de perros. La aplicación tomará como base el archivo `dogs.json`, que contiene detalles de perros, como su nombre, raza, y edad. Tu objetivo es modelar y manipular esta información mediante una API que siga las prácticas de desarrollo vistas en clase.
-
- **Instrucciones:** Al finalizar, deberás completar este README.md con una documentación detallada de los endpoints de tu API. Asegúrate de incluir para cada endpoint:
- - Método HTTP (GET, POST, PUT, DELETE).
- - Ruta del endpoint.
- - Descripción de parámetros o query params.
- - Ejemplo del cuerpo de solicitud (si aplica).
- - Posibles respuestas en formato JSON.
- - Códigos de estado HTTP asociados.
- 
- Esta documentación te ayudará a estructurar tu API de forma clara y a mejorar la comprensión de los usuarios.
-
 ## Configuración del Entorno ⚙️
 
  Antes de iniciar la aplicación, es necesario configurar las variables de entorno para la conexión con la base de datos MongoDB.
@@ -28,6 +12,7 @@ En este proyecto, desarrollarás una API RESTful utilizando **Express** y **Mong
     DB_PASS=<tu_contraseña>
     DB_NAME=<tu_nombre_de_db>
     DB_OPTIONS=retryWrites=true&w=majority
+    DB_NAME=<base vacia> //base para control de errores
     ```
 
 El archivo `config/database.js` es el encargado de leer estas variables y establecer la conexión con la base de datos utilizando Mongoose.
@@ -35,8 +20,6 @@ El archivo `config/database.js` es el encargado de leer estas variables y establ
 ## Documentación de la API 📖 -->
 
 A continuación se detallan los endpoints disponibles en la API para gestionar los perros.
-
-
 
  <details>
 <summary><strong>1. Obtener todos los perros</strong></summary>
@@ -64,16 +47,8 @@ A continuación se detallan los endpoints disponibles en la API para gestionar l
     }
   ]
   ```
-- **Respuesta de Error (Código `500 Internal Server Error`):**
-  ```json
-  {
-    "mensaje": "Error al obtener los perros"
-  }
-  ```
 </details> -->
-
 ---
-
  <details> -->
  <summary><strong>2. Obtener un perro por ID</strong></summary>
 
@@ -100,15 +75,12 @@ A continuación se detallan los endpoints disponibles en la API para gestionar l
   }
   ```
 </details> 
-
----
-
 <details>
 <summary><strong>3. Agregar un nuevo perro</strong></summary>
 
 - **Método HTTP:** `POST`
 - **Ruta:** `/api/perros`
-- **Descripción:** Crea y guarda un nuevo perro en la base de datos.
+- **Descripción:** Crea y guarda un nuevo perro en la base de datos. 
 - **Cuerpo de la Solicitud (Ejemplo):**
   ```json
   {
@@ -140,13 +112,9 @@ A continuación se detallan los endpoints disponibles en la API para gestionar l
 </details>
 
 ---
-
-<details>
-<summary><strong>4. Actualizar un perro</strong></summary>
-
 - **Método HTTP:** `PUT`
 - **Ruta:** `/api/perros/{id}`
-- **Descripción:** Modifica los datos de un perro existente, identificado por su ID.
+- **Descripción:** Modifica los datos de un perro existente, identificado por su ID.(Recuerda utilizar New: true, para actualizar)
 - **Parámetros de Ruta:**
   - `{id}` (obligatorio): El ID del perro a actualizar.
 - **Cuerpo de la Solicitud (Ejemplo):**
@@ -202,9 +170,6 @@ A continuación se detallan los endpoints disponibles en la API para gestionar l
   ```
 </details>
 
-## Entrega 📌
-
-Deberás diseñar y desarrollar una API backend que maneje la información de perros almacenada en MongoDB. Además, se espera que documentes los endpoints creados en el archivo README.md.
 
 ## Dataset Proporcionado 📂
 
@@ -255,8 +220,4 @@ El archivo `dogs.json` incluye propiedades de cada perro. Deberás crear un mode
 - **/config/database.js**: Configuración de la conexión a MongoDB.
 - **/models/**: Contiene el modelo de datos `Dog` para MongoDB.
 - **/routes/**: Define las rutas de los endpoints del CRUD.
-- **/controllers/**: Define los controladores de los endpoints del CRUD.
-
-## Conclusión 🎉
-
-Este proyecto te permitirá aplicar los conceptos clave de desarrollo backend con Express y Mongoose, además de gestionar datos en MongoDB. ¡Recuerda mantener tu código organizado y bien documentado!
+- **/controllers/**: Define los controladores de los endpoints del CRUD. (Recuerda conectar la hoja de ruta con el controlador adecuado)    

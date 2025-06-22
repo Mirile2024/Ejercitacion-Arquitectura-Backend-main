@@ -26,4 +26,4 @@ Content-Type: application/json
 }
 
 ### Eliminar un perro
-DELETE http://localhost:3000/api/perros/685613d5a5e4075d8bf8d7f2
+DELETE http://localhost:3000/api/perros/68561fd8c704859890546fda

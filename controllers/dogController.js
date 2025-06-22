@@ -28,9 +28,13 @@ const getdogById = async (req, res) => {
 }
 
 const postDog = async (req, res) => {
-  const newDog = new Dog({ ...req.body })
-  const insertedDog = await newDog.save()
-  return res.status(201).json(insertedDog)
+  try{
+    const newDog = new Dog({ ...req.body })
+    const insertedDog = await newDog.save()
+    return res.status(201).json({message: "Perro agregado exitosamente", perro: insertedDog})
+  } catch (error) {
+    return res.status(400).json({ error: "Los datos proporcionados son inválidos." })
+  }
 }
 
 const putDog =async (req, res) => {
@@ -39,7 +43,8 @@ const putDog =async (req, res) => {
     const updatedDog = await Dog.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-    return res.status(200).json(updatedDog)
+    return res.status(200).json(updatedDog)// ver manejo de error 404
+
   } catch (error) {
     return res.status(500).json({ error: "Error al actualizar el perro" })
   }
